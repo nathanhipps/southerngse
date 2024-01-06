@@ -1,28 +1,19 @@
 <?php
 
+use App\Livewire\Account\Index as AccountIndex;
+use App\Livewire\Parts\Index as PartsIndex;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'pages.home')->name('home');
+Route::view('/services', 'pages.services')->name('services');
+Route::view('/contact-us', 'pages.contact')->name('contact');
+Route::view('/about', 'pages.about')->name('about');
+Route::get('/parts', PartsIndex::class)->name('parts');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/account', AccountIndex::class)->name('account');
 });

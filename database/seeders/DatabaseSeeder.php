@@ -3,20 +3,29 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Cart;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $user = User::factory()->create([
+            'name' => 'Nathan Hipps',
+            'email' => 'nathan@clickable.dev',
+            'is_admin' => 1
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory(10)->create();
+
+        foreach (User::all() as $user) {
+            Cart::create(['user_id' => $user->id]);
+        }
+
+        $this->call([
+            ManufacturerSeeder::class,
+            PartSeeder::class,
+        ]);
     }
 }
