@@ -8,6 +8,7 @@ Route::view('/', 'pages.home')->name('home');
 Route::view('/services', 'pages.services')->name('services');
 Route::view('/contact-us', 'pages.contact')->name('contact');
 Route::view('/about', 'pages.about')->name('about');
+Route::view('/test', 'pages.test')->name('test');
 Route::get('/parts', PartsIndex::class)->name('parts');
 
 Route::middleware([

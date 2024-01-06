@@ -12,13 +12,13 @@ class PartSeeder extends Seeder
     public function run(): void
     {
         collect([
-            ['Switches', 'iconpark-switchbutton-o'],
-            ['Boards', 'phosphor-circuitry-light'],
-            ['Gauges', 'phosphor-gauge-light'],
-            ['Power Cables', 'gmdi-power-o'],
-            ['AC Hoses', 'gmdi-air-r'],
-            ['Transformers', 'tabler-circuit-resistor'],
-            ['Sheet Metal Panels', 'sui-panel-center'],
+            ['Switches', 'toggle-right'],
+            ['Boards', 'circuitry'],
+            ['Gauges', 'gauge'],
+            ['Power Cables', 'plug'],
+            ['AC Hoses', 'wind'],
+            ['Transformers', 'spiral'],
+            ['Sheet Metal Panels', 'square-logo'],
         ])->each(function ($item) {
             Category::factory()->create([
                 'name' => $item[0],

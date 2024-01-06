@@ -24,7 +24,7 @@ class Cart extends Model
     {
         $cart = auth()->user()->cart;
 
-        if ($item = CartItem::where('cart_id', $cart->id)->where('part_id', $part->id)->get()) {
+        if ($item = CartItem::where('cart_id', $cart->id)->where('part_id', $part->id)->first()) {
             $item->update(['quantity', $item->quantity + 1]);
         }
 

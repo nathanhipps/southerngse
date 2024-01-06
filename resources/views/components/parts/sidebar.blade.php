@@ -1,4 +1,4 @@
-<div class=" min-w-64 flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
+<div class=" min-w-64 max-w-80 flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
     <nav class="flex flex-1 flex-col">
         <ul role="list" class="flex flex-1 flex-col gap-y-7">
             <li>
@@ -12,7 +12,7 @@
                                 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50' => request()->category !== '' || request()->category !== null,
                             ])
                         >
-                            <x-tabler-infinity/>
+                            <x-icons.infinity class="w-5 h-5"/>
                             All Parts
                         </a>
                     </li>
@@ -27,8 +27,8 @@
                                 ])
                             >
                                 <x-dynamic-component
-                                    class="w-5 h-5 "
-                                    :component="$category->icon"
+                                    class="w-5 h-5"
+                                    :component="'icons.'.$category->icon"
                                 />
 
                                 {{ $category->name }}
