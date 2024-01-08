@@ -35,6 +35,8 @@ class CreateNewUser implements CreatesNewUsers
 
         Cart::create(['user_id' => $user->id]);
 
+        Cart::mergeStorageTypes();
+        
         return $user;
     }
 }

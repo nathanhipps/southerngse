@@ -20,6 +20,7 @@
 <body class="font-sans antialiased">
 <div class="bg-white">
     <x-nav/>
+    <x-notification/>
 
     <main>
         {{ $slot }}

@@ -1,5 +1,6 @@
 @props(['part'])
-<div class="group relative border-b border-r border-gray-200 p-4 sm:p-6">
+
+<div {{ $attributes }} class="group relative border-b border-r border-gray-200 p-4 sm:p-6">
     <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
         @if ($part->image_path)
             <img src="{{ $part->image_path }}"
@@ -16,16 +17,24 @@
                 {{ $part->sku }}
             </span>
         </h2>
-        <livewire:cart.button :part="$part">
-            <h3 class="text-sm font-medium text-gray-900">
-                <a href="#">
-                    <span aria-hidden="true" class="absolute inset-0"></span>
-                    {{ $part->description }}
-                </a>
-            </h3>
-            <p class="mt-4 text-base font-medium text-gray-900">
-                {{ $part->displayPrice }}
-            </p>
+        <div class="relative z-10">
+            <x-button
+                wire:click="addToCart({{ $part->id }})"
+                class="my-2"
+            >
+                <x-icons.shopping-cart class="w-6 h-6"/>
+            </x-button>
+        </div>
+
+        <h3 class="text-sm font-medium text-gray-900">
+            <a href="#">
+                <span aria-hidden="true" class="absolute inset-0"></span>
+                {{ $part->description }}
+            </a>
+        </h3>
+        <p class="mt-4 text-base font-medium text-gray-900">
+            {{ $part->displayPrice }}
+        </p>
 
     </div>
 </div>

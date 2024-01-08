@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Parts;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Part;
 use Livewire\Attributes\Computed;
@@ -24,9 +25,23 @@ class Index extends Component
         $this->resetPage();
     }
 
+    public function clearSearch()
+    {
+        $this->search = '';
+    }
+
     public function updatingCategory()
     {
         $this->resetPage();
+    }
+
+    public function addToCart($id)
+    {
+        $part = Part::findOrFail($id);
+        Cart::addItem($part);
+
+        $this->dispatch('item-added-to-cart');
+        $this->dispatch('notify', title: 'Success', message: $part->sku.' has been added to your cart.');
     }
 
     #[Computed]

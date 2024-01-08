@@ -39,7 +39,7 @@
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
             <div class="flex items-center space-x-8">
-                <livewire:cart.counter/>
+                <span class="text-white"><livewire:cart.counter/></span>
                 @if (auth()->check())
                     <a href="{{ route('account') }}" class="text-sm font-semibold leading-6 text-white">
                         Your account <span aria-hidden="true">&rarr;</span>
@@ -92,6 +92,7 @@
                         <x-nav.mobile-link href="{{ route('parts') }}">Parts</x-nav.mobile-link>
                         <x-nav.mobile-link href="{{ route('about') }}">Parts</x-nav.mobile-link>
                         <x-nav.mobile-link href="{{ route('contact') }}">Contact</x-nav.mobile-link>
+                        <livewire:cart.counter/>
                     </div>
                     <div class="py-6">
                         @if (auth()->check())

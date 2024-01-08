@@ -11,6 +11,16 @@ class Cart extends Model
 {
     use HasFactory;
 
+    public function items(): HasMany
+    {
+        return $this->hasMany(CartItem::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public static function addItem(Part $part): void
     {
         if (auth()->check()) {
@@ -25,18 +35,13 @@ class Cart extends Model
         $cart = auth()->user()->cart;
 
         if ($item = CartItem::where('cart_id', $cart->id)->where('part_id', $part->id)->first()) {
-            $item->update(['quantity', $item->quantity + 1]);
+            $item->update(['quantity' => $item->quantity + 1]);
         }
 
         CartItem::create([
             'part_id' => $part->id,
             'cart_id' => $cart->id,
         ]);
-    }
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
     }
 
     public static function addToSession(Part $part): void
@@ -54,6 +59,44 @@ class Cart extends Model
                 $part->id => 1
             ]);
         }
+    }
+
+    public static function hasItems(): bool
+    {
+        if (auth()->check()) {
+            return (bool) auth()->user()->cart->items()->count();
+        } else {
+            return (bool) count(session()->get('cart') ?? []);
+        }
+    }
+
+    public function subtotal(): float
+    {
+        return $this->items()->with('part')->get()
+            ->reduce(function (?int $carry, CartItem $item) {
+                return $carry + $item->quantity * $item->part->price;
+            }, 0);
+    }
+
+    public function shippingEstimate(): float
+    {
+        $subtotal = $this->subtotal();
+
+        if ($subtotal < 50000) {
+            return 25;
+        }
+
+        return $subtotal * .05;
+    }
+
+    public function taxEstimate(): int
+    {
+        return 0;
+    }
+
+    public function total(): float
+    {
+        return $this->subtotal() + $this->shippingEstimate() + $this->taxEstimate();
     }
 
     public function mergeStorageTypes(): void
@@ -75,10 +118,5 @@ class Cart extends Model
         }
 
         session()->put('cart', []);
-    }
-
-    public function items(): HasMany
-    {
-        return $this->hasMany(CartItem::class);
     }
 }

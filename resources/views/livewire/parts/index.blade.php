@@ -8,12 +8,12 @@
                     placeholder="Search for parts..."
                     class="w-96"
                 />
-                <x-button>Clear Search</x-button>
+                <x-button wire:click="clearSearch">Clear Search</x-button>
             </div>
         </div>
         <x-parts>
             @foreach($parts as $part)
-                <x-parts.part :part="$part"/>
+                <x-parts.part :wire:key="$part->id" :part="$part"/>
             @endforeach
         </x-parts>
     </div>
