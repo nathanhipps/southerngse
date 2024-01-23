@@ -17,7 +17,14 @@
     <!-- Styles -->
     @livewireStyles
 </head>
-<body class="font-sans antialiased">
+<body
+    x-data="{
+        hideScroll: false,
+    }"
+    x-on:lock-scroll="hideScroll = true"
+    x-on:unlock-scroll="hideScroll = false"
+    :class="hideScroll ? 'font-sans antialiased overflow-hidden' : 'font-sans antialiased'"
+>
 <div class="bg-white">
     <x-nav/>
     <x-notification/>

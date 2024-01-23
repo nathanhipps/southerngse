@@ -1,33 +1,50 @@
 <div class="mt-8">
-    <x-button>
+    <x-button
+        wire:click="startNewAddress"
+    >
         New Address
     </x-button>
     <ul role="list" class="divide-y divide-gray-100">
-        <li class="flex items-center justify-between gap-x-6 py-5">
-            <div class="min-w-0">
-                <div class="flex items-start gap-x-3">
-                    <p class="text-sm font-semibold leading-6 text-gray-900">GraphQL API</p>
-                    <p class="rounded-md whitespace-nowrap mt-0.5 px-1.5 py-0.5 text-xs font-medium ring-1 ring-inset text-green-700 bg-green-50 ring-green-600/20">
-                        Complete</p>
+        @foreach($addresses as $address)
+            <li class="flex items-center justify-between gap-x-6 py-5">
+                <div class="min-w-0">
+                    <div class="flex items-start gap-x-3">
+                        <p class="text-sm font-semibold leading-6 text-gray-900">
+                            {{ $address->name }}
+                        </p>
+                    </div>
+                    <div class="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
+                        <p class="whitespace-nowrap">
+                            {{ $address->street }}<br>
+                            {{ $address->details }}<br>
+                            {{ $address->city }}, {{ $address->state }} {{ $address->zip }}
+                        </p>
+                    </div>
                 </div>
-                <div class="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
-                    <p class="whitespace-nowrap">Due on
-                        <time datetime="2023-03-17T00:00Z">March 17, 2023</time>
-                    </p>
-                    <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 fill-current">
-                        <circle cx="1" cy="1" r="1"/>
-                    </svg>
-                    <p class="truncate">Created by Leslie Alexander</p>
+                <div class="flex flex-none items-center gap-x-4">
+                    <button
+                        wire:click="deleteAddress({{ $address->id }})"
+                        wire:confirm="Are you sure you want to delete this address"
+                        class="hidden rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-gray-100 shadow-sm ring-1 ring-inset ring-red-300 hover:bg-red-800 sm:block"
+                    >
+                        Delete
+                    </button>
                 </div>
-            </div>
-            <div class="flex flex-none items-center gap-x-4">
-                <a href="#"
-                   class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block"
-                >
-                    Make Default
-                    <span class="sr-only">, GraphQL API</span>
-                </a>
-            </div>
-        </li>
+            </li>
+        @endforeach
     </ul>
+
+    <x-slideover wire:model="slider">
+        <x-slideover.header>
+            <div class="flex space-x-2 text-gray-600 items-center">
+                <span>
+                    New Address
+                </span>
+            </div>
+        </x-slideover.header>
+
+        <div class="px-5">
+            <livewire:account.address-form/>
+        </div>
+    </x-slideover>
 </div>

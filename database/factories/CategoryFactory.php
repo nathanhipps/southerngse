@@ -18,7 +18,8 @@ class CategoryFactory extends Factory
                 'AC Hoses',
                 'Transformers',
                 'Sheet Metal Panels',
-            ])
+            ]),
+            'icon' => 'infinity'
         ];
     }
 }

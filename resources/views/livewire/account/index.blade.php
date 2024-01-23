@@ -14,6 +14,7 @@
                     <option value="orders">Orders</option>
                     <option value="addresses">Addresses</option>
                     <option value="cards">Credit Cards</option>
+                    <option value="shipping">Freight Carriers</option>
                 </select>
             </div>
             <div class="hidden sm:block">
@@ -79,6 +80,20 @@
                                    ])/>
                             <span>Credit Cards</span>
                         </button>
+                        <button wire:click="changePage('shipping')" type="button"
+                            @class([
+                                 'group inline-flex items-center border-b-2 py-4 px-1 text-sm font-medium',
+                                 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' => $page !== 'shipping',
+                                 'border-green-500 text-green-600' => $page === 'shipping',
+                             ])>
+                            <x-icons.truck
+                                @class([
+                                       '-ml-0.5 mr-2 h-5 w-5',
+                                       'text-gray-400 group-hover:text-gray-500' => $page !== 'shipping',
+                                       'border-green-500 text-green-600' => $page === 'shipping',
+                                   ])/>
+                            <span>Freight Carriers</span>
+                        </button>
                     </nav>
                 </div>
             </div>
@@ -98,6 +113,10 @@
 
             @if ($page === 'cards')
                 <livewire:account.cards/>
+            @endif
+
+            @if ($page === 'shipping')
+                <livewire:account.carriers/>
             @endif
         </div>
     </div>

@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
+            $table->integer('order_id')->unsigned()->index();
+            $table->string('sku');
+            $table->string('description');
+            $table->integer('quantity');
+            $table->integer('price');
+            $table->integer('shipped_quantity')->default(0);
+            $table->date('cancelled_at')->nullable();
+            $table->bigInteger('part_id')->unsigned()->index();
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -18,7 +18,6 @@ return new class extends Migration {
             $table->string('city');
             $table->string('state');
             $table->string('zip');
-            $table->boolean('is_primary')->default(false);
             $table->integer('user_id')->index()->unsigned();
 
             $table->softDeletes();

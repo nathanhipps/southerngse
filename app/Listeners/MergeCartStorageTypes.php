@@ -9,7 +9,7 @@ class MergeCartStorageTypes
 
     }
 
-    public function handle(object $event): void
+    public function handle(): void
     {
         auth()->user()->cart->mergeStorageTypes();
     }

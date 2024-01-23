@@ -14,13 +14,12 @@ return new class extends Migration {
             $table->string('brand');
             $table->integer('exp_month');
             $table->integer('exp_year');
-            $table->boolean('is_primary')->default(false);
             $table->integer('user_id')->unsigned()->index();
             $table->softDeletes();
             $table->timestamps();
         });
     }
-    
+
     public function down(): void
     {
         Schema::dropIfExists('cards');

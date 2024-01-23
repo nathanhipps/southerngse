@@ -30,21 +30,21 @@ class Cart extends Model
         }
     }
 
-    public static function addToDatabase(Part $part): void
+    protected static function addToDatabase(Part $part): void
     {
         $cart = auth()->user()->cart;
 
         if ($item = CartItem::where('cart_id', $cart->id)->where('part_id', $part->id)->first()) {
             $item->update(['quantity' => $item->quantity + 1]);
+        } else {
+            CartItem::create([
+                'part_id' => $part->id,
+                'cart_id' => $cart->id,
+            ]);
         }
-
-        CartItem::create([
-            'part_id' => $part->id,
-            'cart_id' => $cart->id,
-        ]);
     }
 
-    public static function addToSession(Part $part): void
+    protected static function addToSession(Part $part): void
     {
         if ($cart = session()->get('cart')) {
             if (isset($cart[$part->id])) {
@@ -82,8 +82,12 @@ class Cart extends Model
     {
         $subtotal = $this->subtotal();
 
+        if ($subtotal == 0) {
+            return 0;
+        }
+
         if ($subtotal < 50000) {
-            return 25;
+            return 2500;
         }
 
         return $subtotal * .05;
@@ -102,7 +106,6 @@ class Cart extends Model
     public function mergeStorageTypes(): void
     {
         $items = session()->get('cart');
-
         if (!$items) {
             return;
         }

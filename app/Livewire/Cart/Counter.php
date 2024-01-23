@@ -15,10 +15,9 @@ class Counter extends Component
         $this->show = Cart::hasItems();
     }
 
-    #[On('add-to-cart')]
-    public function showCounter($id): void
+    #[On('item-added-to-cart')]
+    public function showCounter(): void
     {
-        ray($id);
         $this->show = true;
     }
 

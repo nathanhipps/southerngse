@@ -13,6 +13,20 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('number')->nullable();
+            $table->integer('user_id')->index()->unsigned();
+            $table->integer('card_id')->index()->unsigned()->nullable();
+            $table->integer('address_id')->index()->unsigned();
+            $table->integer('carrier_id')->index()->unsigned()->nullable();
+            $table->string('shipping_time');
+            $table->integer('shipping');
+            $table->integer('tax');
+            $table->integer('subtotal');
+            $table->integer('total');
+            $table->string('tracking_number')->nullable();
+            $table->dateTime('closed_at')->nullable();
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

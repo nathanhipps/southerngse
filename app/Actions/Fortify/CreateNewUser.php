@@ -13,11 +13,6 @@ class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
 
-    /**
-     * Validate and create a newly registered user.
-     *
-     * @param  array<string, string>  $input
-     */
     public function create(array $input): User
     {
         Validator::make($input, [
@@ -33,10 +28,10 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
 
-        Cart::create(['user_id' => $user->id]);
+        $cart = Cart::create(['user_id' => $user->id]);
 
-        Cart::mergeStorageTypes();
-        
+        $cart->mergeStorageTypes();
+
         return $user;
     }
 }
