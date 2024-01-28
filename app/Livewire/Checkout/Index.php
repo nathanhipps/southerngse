@@ -13,6 +13,7 @@ class Index extends Component
     public $carrier_id = '';
     public $card_id = '';
     public $deliveryTime = '';
+    public $slider = false;
     public $cart;
 
     public function mount()
@@ -32,6 +33,12 @@ class Index extends Component
         $this->cart = auth()->user()->cart;
     }
 
+    public function startAction($action): void
+    {
+        $this->action = $action;
+        $this->slider = true;
+    }
+
     #[Computed]
     public function items(): Collection
     {
@@ -49,7 +56,7 @@ class Index extends Component
 
     public function submit()
     {
-        dd('submitted');
+
     }
 
     public function render()

@@ -28,6 +28,7 @@
                         </select>
                     </label>
                     <button
+                        wire:click="startAction('add-address')"
                         type="button"
                         class="mt-2 rounded bg-green-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
                     >
@@ -55,6 +56,7 @@
                     </label>
 
                     <button
+                        wire:click="startAction('add-card')"
                         type="button"
                         class="mt-2 rounded bg-green-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
                     >
@@ -86,6 +88,7 @@
                         @endif
                     </label>
                     <button
+                        wire:click="startAction('add-carrier')"
                         type="button"
                         class="mt-2 rounded bg-green-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
                     >
