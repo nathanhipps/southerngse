@@ -16,6 +16,12 @@ class DatabaseSeeder extends Seeder
             'is_admin' => 1
         ]);
 
+        $user = User::factory()->create([
+            'name' => 'Jason Lemley',
+            'email' => 'jason@southerngse.com',
+            'is_admin' => 1
+        ]);
+
         User::factory(10)->create();
 
         $this->call([
