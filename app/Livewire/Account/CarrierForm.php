@@ -19,14 +19,14 @@ class CarrierForm extends Component
         $this->validate();
 
         auth()->user()->carriers()->save(
-            FreightCarrier::make([
+            $carrier = FreightCarrier::make([
                 'name' => $this->name,
                 'account_number' => $this->account_number,
             ])
         );
         $this->reset();
 
-        $this->dispatch('carrier-created');
+        $this->dispatch('carrier-created', carrierId: $carrier->id);
     }
 
     public function render()

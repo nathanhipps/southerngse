@@ -13,7 +13,7 @@ class AddressForm extends Component
 
     #[Validate('required')]
     public $street = '';
-    
+
     public $details = '';
 
     #[Validate('required')]
@@ -30,7 +30,7 @@ class AddressForm extends Component
         $this->validate();
 
         auth()->user()->addresses()->save(
-            Address::make([
+            $address = Address::make([
                 'name' => $this->name,
                 'street' => $this->street,
                 'details' => $this->details,
@@ -41,7 +41,7 @@ class AddressForm extends Component
         );
         $this->reset();
 
-        $this->dispatch('address-created');
+        $this->dispatch('address-created', addressId: $address->id);
     }
 
     public function render()

@@ -10,6 +10,9 @@ class CardForm extends Component
     public function createCard($card)
     {
         $card = Card::createFromInput($card);
+
+        $this->dispatch('card-created', cardId: $card->id);
+
     }
 
     public function render()

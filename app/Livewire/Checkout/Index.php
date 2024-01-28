@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Checkout;
 
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Index extends Component
@@ -15,6 +17,7 @@ class Index extends Component
     public $deliveryTime = '';
     public $slider = false;
     public $cart;
+    public $notes = '';
 
     public function mount()
     {
@@ -54,9 +57,45 @@ class Index extends Component
             && $this->card_id;
     }
 
+    #[On('address-created')]
+    public function handleNewAddress($addressId): void
+    {
+        $this->slider = false;
+
+        if (auth()->user()->addresses()->find($addressId)) {
+            $this->address_id = $addressId;
+        }
+    }
+
+    #[On('card-created')]
+    public function handleNewCard($cardId): void
+    {
+        $this->slider = false;
+
+        if (auth()->user()->cards()->find($cardId)) {
+            $this->card_id = $cardId;
+        }
+    }
+
+    #[On('carrier-created')]
+    public function handleNewCarrier($carrierId): void
+    {
+        $this->slider = false;
+
+        if (auth()->user()->carriers()->find($carrierId)) {
+            $this->carrier_id = $carrierId;
+        }
+    }
+
     public function submit()
     {
-
+        Order::process(
+            cartId: $this->cart->id,
+            addressId: $this->address_id,
+            cardId: $this->card_id,
+            deliveryTime: $this->deliveryTime,
+            carrierId: $this->carrier_id,
+        );
     }
 
     public function render()

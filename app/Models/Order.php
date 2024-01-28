@@ -36,8 +36,13 @@ class Order extends Model
         return $this->belongsTo(FreightCarrier::class);
     }
 
-    public static function process(array $data): void
-    {
-        ray($data);
+    public static function process(
+        int $cartId,
+        int $addressId,
+        int $cardId,
+        string $deliveryTime,
+        ?int $carrierId,
+    ): void {
+        ray();
     }
 }
