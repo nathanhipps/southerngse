@@ -42,6 +42,11 @@
                 <span class="text-white">
                     <livewire:cart.counter/>
                 </span>
+                @if (auth()->user()->is_admin)
+                    <a href="/admin" class="text-sm font-semibold leading-6 text-white">
+                        Admin
+                    </a>
+                @endif
                 @if (auth()->check())
                     <a href="{{ route('account') }}" class="text-sm font-semibold leading-6 text-white">
                         Your account <span aria-hidden="true">&rarr;</span>
@@ -97,6 +102,12 @@
                         <livewire:cart.counter/>
                     </div>
                     <div class="py-6">
+                        @if (auth()->user()->is_admin)
+                            <a href="/admin"
+                               class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                Admin
+                            </a>
+                        @endif
                         @if (auth()->check())
                             <a href="{{ route('account') }}"
                                class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
