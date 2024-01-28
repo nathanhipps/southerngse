@@ -12,12 +12,12 @@ class PartFactory extends Factory
         return [
             'sku' => $this->faker->numberBetween(10000, 99999),
             'description' => $this->faker->sentence,
-            'price' => $price = $this->faker->numberBetween(100, 99999),
+            'price' => $price = $this->faker->numberBetween(10, 9999),
             'cost' => $price * .65,
             'inventory' => $this->faker->numberBetween(0, 100),
             'lead_time_in_days' => $this->faker->numberBetween(0, 365),
             'slug' => $this->faker->slug,
-            'image_path' => 'https://source.unsplash.com/random',
+            'image_path' => '',
             'manufacturer_id' => Manufacturer::factory(),
         ];
     }

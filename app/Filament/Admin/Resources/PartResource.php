@@ -48,6 +48,9 @@ class PartResource extends Resource
 
                 FileUpload::make('image_path')
                     ->image()
+                    ->disk('do')
+                    ->visibility('public')
+                    ->directory(env('APP_ENV').'/parts/images')
                     ->imageEditor(),
 
                 Select::make('manufacturer_id')

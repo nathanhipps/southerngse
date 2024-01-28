@@ -1,9 +1,16 @@
 <li :key="$item->id" class="flex py-6 sm:py-10">
     <div class="flex-shrink-0">
-        <img
-            src="{{ $item->part->image_path }}"
-            alt="{{ $item->part->description }}"
-            class="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48">
+        @if ($item->part?->image_path)
+            <img
+                src="https://southern-gse.nyc3.digitaloceanspaces.com/{{ $item->part->image_path }}"
+                alt="{{ $item->part->description }}"
+                class="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48">
+        @else
+            <img
+                src="https://images.unsplash.com/photo-1610642372651-fe6e7bc209ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300"
+                alt="{{ $item->part->description }}"
+                class="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48">
+        @endif
     </div>
 
     <div class="ml-4 flex flex-1 flex-col justify-between sm:ml-6">

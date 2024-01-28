@@ -1,6 +1,4 @@
 <div>
-    <script src="https://js.stripe.com/v3/"></script>
-
     <div
         x-init="startup($refs)"
         x-data="{
@@ -65,7 +63,7 @@
                 <div class="mt-4 md:mt-0">
                     <x-button>
                         <span x-show="loading">
-                            <x-icons.spinner class="w-5 animate-spin" />
+                            <x-icons.spinner class="w-5 animate-spin"/>
                         </span>
                         <span x-show="! loading">
                             Add Card

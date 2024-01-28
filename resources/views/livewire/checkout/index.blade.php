@@ -10,7 +10,6 @@
         <form class="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
             <div>
                 <div class="mt-10 border-t border-gray-200 pt-10">
-
                     <label>
                         <h2 class="text-lg font-medium text-gray-900">Shipping information</h2>
                         <select
@@ -37,7 +36,6 @@
                 </div>
 
                 <div class="mt-10 border-t border-gray-200 pt-10">
-
                     <label>
                         <h2 class="text-lg font-medium text-gray-900">Credit Card</h2>
                         <select
@@ -125,11 +123,19 @@
                         @foreach($items as $key => $item)
                             <li class="flex px-4 py-6 sm:px-6">
                                 <div class="flex-shrink-0">
-                                    <img
-                                        src="{{ $item->part->image_path }}"
-                                        alt="{{ $item->part->description }}"
-                                        class="w-20 rounded-md"
-                                    >
+                                    @if ($item->part?->image_path)
+                                        <img
+                                            src="https://southern-gse.nyc3.digitaloceanspaces.com/{{ $item->part->image_path }}"
+                                            alt="{{ $item->part->description }}"
+                                            class="w-20 rounded-md"
+                                        >
+                                    @else
+                                        <img
+                                            src="https://images.unsplash.com/photo-1610642372651-fe6e7bc209ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300"
+                                            alt="{{ $item->part->description }}"
+                                            class="w-20 rounded-md"
+                                        >
+                                    @endif
                                 </div>
 
                                 <div class="ml-6 flex flex-1 flex-col">
