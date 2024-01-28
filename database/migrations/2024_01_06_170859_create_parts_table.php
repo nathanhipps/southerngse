@@ -13,12 +13,12 @@ return new class extends Migration {
             $table->string('sku');
             $table->string('description');
             $table->integer('price');
-            $table->integer('cost');
+            $table->integer('cost')->nullable();
             $table->integer('inventory')->default(0);
             $table->bigInteger('lead_time_in_days')->default(0);
             $table->string('slug');
-            $table->string('image_path');
-            $table->string('manufacturer_id');
+            $table->string('image_path')->nullable();
+            $table->string('manufacturer_id')->nullable();
             $table->timestamps();
         });
     }

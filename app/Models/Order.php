@@ -11,6 +11,11 @@ class Order extends Model
 {
     use HasFactory;
 
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function items(): HasMany
     {
         return $this->hasMany(OrderItem::class);
@@ -29,5 +34,10 @@ class Order extends Model
     public function carrier(): BelongsTo
     {
         return $this->belongsTo(FreightCarrier::class);
+    }
+
+    public static function process(array $data): void
+    {
+        ray($data);
     }
 }
