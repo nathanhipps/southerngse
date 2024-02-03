@@ -1,4 +1,4 @@
-<li :key="$item->id" class="flex py-6 sm:py-10">
+<li class="flex py-6 sm:py-10">
     <div class="flex-shrink-0">
         @if ($item->part?->image_path)
             <img

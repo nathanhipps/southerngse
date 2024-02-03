@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use App\Concerns\HasItemAmounts;
+use App\Contracts\Itemable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Cart extends Model
+class Cart extends Model implements Itemable
 {
     use HasFactory;
+    use HasItemAmounts;
 
     public function items(): HasMany
     {
@@ -70,39 +73,6 @@ class Cart extends Model
         }
     }
 
-    public function subtotal(): float
-    {
-        return $this->items()->with('part')->get()
-            ->reduce(function (?int $carry, CartItem $item) {
-                return $carry + $item->quantity * $item->part->price;
-            }, 0);
-    }
-
-    public function shippingEstimate(): float
-    {
-        $subtotal = $this->subtotal();
-
-        if ($subtotal == 0) {
-            return 0;
-        }
-
-        if ($subtotal < 50000) {
-            return 2500;
-        }
-
-        return $subtotal * .05;
-    }
-
-    public function taxEstimate(): int
-    {
-        return 0;
-    }
-
-    public function total(): float
-    {
-        return $this->subtotal() + $this->shippingEstimate() + $this->taxEstimate();
-    }
-
     public function mergeStorageTypes(): void
     {
         $items = session()->get('cart');
@@ -121,5 +91,10 @@ class Cart extends Model
         }
 
         session()->put('cart', []);
+    }
+
+    public function empty(): void
+    {
+        $this->items()->delete();
     }
 }

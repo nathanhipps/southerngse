@@ -3,6 +3,8 @@
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 
+beforeEach(fn() => $this->setupAccount());
+
 test('login screen can be rendered', function () {
     $response = $this->get('/login');
 
@@ -10,10 +12,9 @@ test('login screen can be rendered', function () {
 });
 
 test('users can authenticate using the login screen', function () {
-    $user = User::factory()->create();
-
+    $this->withoutExceptionHandling();
     $response = $this->post('/login', [
-        'email' => $user->email,
+        'email' => $this->user->email,
         'password' => 'password',
     ]);
 

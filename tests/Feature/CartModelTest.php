@@ -52,7 +52,7 @@ it('can calculate a subtotal', function () {
     Cart::addItem($part1);
     Cart::addItem($part2);
 
-    expect(auth()->user()->cart->subtotal())
+    expect(auth()->user()->cart->getSubtotal())
         ->toEqual(20000);
 });
 
@@ -74,21 +74,21 @@ it('can merge storage types', function () {
 
     Event::dispatch(Login::class);
 
-    expect(auth()->user()->cart->subtotal())
+    expect(auth()->user()->cart->getSubtotal())
         ->toEqual(15000);
 });
 
 it('can calculate a shipping estimate for under threshold', function () {
     $this->actingAs($this->user);
 
-    $part1 = Part::factory()->create(['price' => 5000]);
-    $part2 = Part::factory()->create(['price' => 10000]);
+    $part1 = Part::factory()->create(['price' => 50]);
+    $part2 = Part::factory()->create(['price' => 100]);
 
     Cart::addItem($part1);
     Cart::addItem($part2);
 
-    expect(auth()->user()->cart->shippingEstimate())
-        ->toEqual(2500);
+    expect(auth()->user()->cart->getShippingEstimate())
+        ->toEqual(25);
 });
 
 it('can calculate a shipping estimate for over threshold', function () {
@@ -98,21 +98,21 @@ it('can calculate a shipping estimate for over threshold', function () {
 
     Cart::addItem($part1);
 
-    expect(auth()->user()->cart->shippingEstimate())
+    expect(auth()->user()->cart->getShippingEstimate())
         ->toEqual(60000 * .05);
 });
 
 it('can calculate a shipping estimate when cart is empty', function () {
     $this->actingAs($this->user);
 
-    expect(auth()->user()->cart->shippingEstimate())
+    expect(auth()->user()->cart->getShippingEstimate())
         ->toEqual(0);
 });
 
 it('can calculate tax for a cart', function () {
     $this->actingAs($this->user);
 
-    expect(auth()->user()->cart->taxEstimate())
+    expect(auth()->user()->cart->getTaxEstimate())
         ->toEqual(0);
 });
 
@@ -125,9 +125,9 @@ it('can calculate a total', function () {
     Cart::addItem($part1);
     Cart::addItem($part2);
 
-    expect(auth()->user()->cart->total())
+    expect(auth()->user()->cart->getTotal())
         ->toEqual(
-            auth()->user()->cart->subtotal() +
-            auth()->user()->cart->shippingEstimate()
+            auth()->user()->cart->getSubtotal() +
+            auth()->user()->cart->getShippingEstimate()
         );
 });

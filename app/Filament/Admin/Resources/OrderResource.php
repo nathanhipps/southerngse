@@ -68,12 +68,13 @@ class OrderResource extends Resource
         return $infolist->schema([
             Split::make([
                 Section::make([
-                    TextEntry::make('number')
-                        ->label('Order Number'),
                     IconEntry::make('Closed')
                         ->boolean()
                         ->getStateUsing(fn($record): bool => blank($record->closed_at)),
-                    TextEntry::make('user.name'),
+                    TextEntry::make('number')
+                        ->label('Order Number'),
+                    TextEntry::make('user.name')
+                        ->label('Purchased By'),
                     TextEntry::make('address')
                         ->formatStateUsing(function ($state) {
                             return $state->street
@@ -81,7 +82,7 @@ class OrderResource extends Resource
                                 .'<br>'.$state->city.', '.$state->state.' '.$state->zip;
                         })->html(),
                     TextEntry::make('card')
-                        ->formatStateUsing(fn($state) => $state->brand.' ending in'.$state->last_four),
+                        ->formatStateUsing(fn($state) => $state->brand.' ending in '.$state->last_four),
                     TextEntry::make('carrier')
                         ->formatStateUsing(fn($state) => $state->name.': '.$state->account_number),
                     TextEntry::make('shipping_time'),

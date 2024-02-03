@@ -2,7 +2,6 @@
 
 namespace App\Filament\Admin\Resources\OrderResource\RelationManagers;
 
-use App\Models\Order;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -10,6 +9,7 @@ use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Collection;
 
 class ItemsRelationManager extends RelationManager
 {
@@ -36,7 +36,7 @@ class ItemsRelationManager extends RelationManager
                 TextColumn::make('sku'),
                 TextColumn::make('description'),
                 TextColumn::make('price')
-                    ->money(divideBy: 100)
+                    ->money()
                     ->alignRight()
             ])
             ->filters([
@@ -52,7 +52,7 @@ class ItemsRelationManager extends RelationManager
             ->bulkActions([
                 BulkAction::make('ship')
                     ->steps([
-                        Forms\Components\Wizard\Step::make('quantities')
+                        Forms\Components\Wizard\Step::make('Shipment Quantities')
                             ->description('Select the quantities of each item being shipped')
                             ->schema(function ($livewire) {
                                 return $livewire->getSelectedTableRecords()->map(function ($record) {
@@ -61,16 +61,16 @@ class ItemsRelationManager extends RelationManager
                                         ->required();
                                 })->toArray();
                             }),
-                        Forms\Components\Wizard\Step::make('shipping')
+                        Forms\Components\Wizard\Step::make('Shipping & Tax')
                             ->description('Fill out all the shipping information')
                             ->schema([
+                                Forms\Components\TextInput::make('orderId')
+                                    ->hidden(),
                                 Forms\Components\TextInput::make('tax_amount')
                                     ->numeric()
                                     ->required(),
                                 Forms\Components\TextInput::make('shipping_amount')
                                     ->numeric()
-                                    ->required(),
-                                Forms\Components\TextInput::make('freight_carrier')
                                     ->required(),
                                 Forms\Components\TextInput::make('tracking_number')
                                     ->required()
@@ -78,8 +78,8 @@ class ItemsRelationManager extends RelationManager
                     ])
                     ->label('Ship and Charge')
                     ->slideOver()
-                    ->action(function (array $data) {
-                        Order::process($data);
+                    ->action(function (array $data, Collection $records) {
+                        $records->first()->order->process($data);
                         return redirect('/admin/orders');
                     })
             ]);

@@ -21,6 +21,10 @@ class Index extends Component
 
     public function mount()
     {
+        if (auth()->user()->cart?->items()->count() === 0) {
+            return redirect()->to('/');
+        }
+
         if (auth()->user()->addresses()->count() === 1) {
             $this->address_id = auth()->user()->addresses()->first()->id;
         }
@@ -89,13 +93,21 @@ class Index extends Component
 
     public function submit()
     {
-        Order::process(
-            cartId: $this->cart->id,
+        Order::submit(
             addressId: $this->address_id,
             cardId: $this->card_id,
             deliveryTime: $this->deliveryTime,
-            carrierId: $this->carrier_id,
+            carrierId: $this->carrier_id ? $this->carrier_id : null,
+            notes: $this->notes,
         );
+
+        $this->dispatch(
+            'notify',
+            title: 'Success',
+            message: 'Your order has been received'
+        );
+
+        return redirect()->to('account');
     }
 
     public function render()

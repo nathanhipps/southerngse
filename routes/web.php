@@ -2,10 +2,18 @@
 
 use App\Http\Controllers\ImageController;
 use App\Livewire\Account\Index as AccountIndex;
+use App\Livewire\Account\OrderShow;
 use App\Livewire\Cart\Show as CartShow;
 use App\Livewire\Checkout\Index as CheckoutIndex;
 use App\Livewire\Parts\Index as PartsIndex;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/preview', function () {
+    $order = App\Models\Order::first();
+
+    return (new App\Notifications\Admin\OrderReceivedNotification($order))
+        ->toMail($order->user);
+});
 
 route::get('/images/{filename}', [ImageController::class, 'show'])
     ->name('image')
@@ -25,4 +33,5 @@ Route::middleware([
 ])->group(function () {
     Route::get('/account', AccountIndex::class)->name('account');
     Route::get('/checkout', CheckoutIndex::class)->name('checkout');
+    Route::get('/orders/{order}', OrderShow::class)->name('order');
 });

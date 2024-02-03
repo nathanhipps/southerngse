@@ -1,18 +1,4 @@
 <div>
-    <!--
-  This example requires some changes to your config:
-
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
     <div class="bg-white">
         <div class="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
             <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Shopping Cart</h1>
@@ -20,8 +6,8 @@
                 <section aria-labelledby="cart-heading" class="lg:col-span-7">
                     <h2 id="cart-heading" class="sr-only">Items in your shopping cart</h2>
                     <ul role="list" class="divide-y divide-gray-200 border-b border-t border-gray-200">
-                        @foreach($cartItems as $key => $item)
-                            <livewire:cart.item :wire:key="$key" :item="$item"/>
+                        @foreach($cartItems as $item)
+                            <livewire:cart.item :key="$item->id" :item="$item"/>
                         @endforeach
                     </ul>
                 </section>
@@ -34,7 +20,7 @@
                     <dl class="mt-6 space-y-4">
                         <div class="flex items-center justify-between">
                             <dt class="text-sm text-gray-600">Subtotal</dt>
-                            <dd class="text-sm font-medium text-gray-900">{{ displayCurrency($cart->subtotal()) }}</dd>
+                            <dd class="text-sm font-medium text-gray-900">{{ displayCurrency($cart->getSubtotal()) }}</dd>
                         </div>
                         <div class="flex items-center justify-between border-t border-gray-200 pt-4">
                             <dt class="flex items-center text-sm text-gray-600">
@@ -49,7 +35,7 @@
                                 </a>
                             </dt>
                             <dd class="text-sm font-medium text-gray-900">
-                                {{ displayCurrency($cart->shippingEstimate()) }}
+                                {{ displayCurrency($cart->getShippingEstimate()) }}
                             </dd>
                         </div>
                         <div class="flex items-center justify-between border-t border-gray-200 pt-4">
@@ -68,7 +54,7 @@
                         </div>
                         <div class="flex items-center justify-between border-t border-gray-200 pt-4">
                             <dt class="text-base font-medium text-gray-900">Order total</dt>
-                            <dd class="text-base font-medium text-gray-900">{{ displayCurrency($cart->total()) }}</dd>
+                            <dd class="text-base font-medium text-gray-900">{{ displayCurrency($cart->getTotal()) }}</dd>
                         </div>
                     </dl>
 

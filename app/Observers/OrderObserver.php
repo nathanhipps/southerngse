@@ -13,7 +13,7 @@ class OrderObserver
 
     public function creating(Order $order): void
     {
-        $order->number = Order::count() + 10000;
+        $order->number = Order::withTrashed()->count() + 10000;
     }
 
     public function updated(Order $order): void

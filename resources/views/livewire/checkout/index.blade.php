@@ -7,7 +7,7 @@
             <span>Checkout</span>
         </h2>
 
-        <form class="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
+        <div class="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
             <div>
                 <div class="mt-10 border-t border-gray-200 pt-10">
                     <label>
@@ -167,31 +167,45 @@
                         <div class="flex items-center justify-between">
                             <dt class="text-sm">Subtotal</dt>
                             <dd class="text-sm font-medium text-gray-900">
-                                {{ displayCurrency($cart->subtotal()) }}
+                                {{ displayCurrency($cart->getSubtotal()) }}
                             </dd>
                         </div>
                         <div class="flex items-center justify-between">
-                            <dt class="text-sm">Shipping</dt>
+                            <dt class="text-sm">Estimated Shipping</dt>
                             <dd class="text-sm font-medium text-gray-900">
-                                {{ displayCurrency($cart->shippingEstimate()) }}
+                                {{ displayCurrency($cart->getShippingEstimate()) }}
                             </dd>
                         </div>
                         <div class="flex items-center justify-between">
-                            <dt class="text-sm">Taxes</dt>
+                            <dt class="text-sm">Estimated Taxes</dt>
                             <dd class="text-sm font-medium text-gray-900">
-                                {{ $cart->taxEstimate() ? $cart->taxEstimate() : 'Taxes will be calculated during shipment' }}
+                                {{ $cart->getTaxEstimate() ? $cart->getTaxEstimate() : 'Taxes will be calculated during shipment' }}
                             </dd>
                         </div>
                         <div class="flex items-center justify-between border-t border-gray-200 pt-6">
                             <dt class="text-base font-medium">Total</dt>
                             <dd class="text-base font-medium text-gray-900">
-                                {{ displayCurrency($cart->total()) }}
+                                {{ displayCurrency($cart->getTotal()) }}
                             </dd>
                         </div>
                     </dl>
-
+                    <div class="px-6 pb-6">
+                        <label for="comment"
+                               class="block text-sm font-medium leading-6 text-gray-900">
+                            Notes / Comments
+                        </label>
+                        <div class="mt-2">
+                            <textarea
+                                wire:model.live.debounce="notes"
+                                rows="4"
+                                name="comment"
+                                id="comment"
+                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            ></textarea>
+                        </div>
+                    </div>
                     <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
-                        <form wire:submit.prevent="submit">
+                        <form wire:submit="submit">
                             <button
                                 type="submit"
                                 @if (!$canSubmit) disabled @endif
@@ -207,7 +221,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 
     <x-slideover wire:model="slider">

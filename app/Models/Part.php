@@ -25,6 +25,11 @@ class Part extends Model
         );
     }
 
+    public function getPriceInCents(): int
+    {
+        return $this->price * 100;
+    }
+
     protected function cost(): Attribute
     {
         return Attribute::make(

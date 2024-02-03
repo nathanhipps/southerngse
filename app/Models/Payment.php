@@ -50,7 +50,6 @@ class Payment extends Model
 
     public function refund($amount = null)
     {
-
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         // If no amount is given, assume a full refund of remaining charges
