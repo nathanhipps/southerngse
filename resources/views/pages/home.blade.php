@@ -33,7 +33,7 @@
                     Genuine GPU replacement parts are just a click away with Southern GSE’s online parts store.
                 </p>
                 <div class="sm:flex justify-center">
-                    <a href="#"
+                    <a href="{{ route('parts') }}"
                        class="sm:max-w-64 bg-brand-orange text-white w-full py-4 block rounded-lg text-center shadow subheader-lg">
                         Shop Parts
                     </a>
@@ -45,7 +45,7 @@
                     Stay up to date on your equipment by downloading manuals, parts lists, and drawings.
                 </p>
                 <div class="sm:flex justify-center">
-                    <a href="#"
+                    <a href="{{ route('manuals') }}"
                        class="sm:max-w-64 bg-brand-orange text-white w-full py-4 block rounded-lg text-center shadow subheader-lg">
                         Downloads
                     </a>
@@ -57,7 +57,7 @@
                     Check out Southern GSE’s incredible deals on new and used aviation ground power equipment.
                 </p>
                 <div class="sm:flex justify-center">
-                    <a href="#"
+                    <a href="{{ route('equipment-used') }}"
                        class="sm:max-w-64 bg-brand-orange text-white w-full py-4 block rounded-lg text-center shadow subheader-lg">
                         Equipment
                     </a>
@@ -87,7 +87,7 @@
                     you are
                     in need of a complete overhaul or just general maintenance, give us a call.
                 </p>
-                <a href="#"
+                <a href="{{ route('contact') }}"
                    class="sm:max-w-64 bg-gray-100 text-brand-orange w-full py-4 block rounded-lg text-center shadow subheader-lg">
                     Contact Us
                 </a>

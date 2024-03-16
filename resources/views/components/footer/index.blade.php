@@ -64,9 +64,9 @@
             @endif
         </div>
     </div>
-    <div class="mx-auto max-w-7xl">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="bg-gray-400 opacity-75 h-[2px] my-6"></div>
-        <div class="text-gray-300 pb-12">
+        <div class="text-gray-300">
             &copy; {{ now()->format('Y') }} Southern GSE All rights reserved.
         </div>
     </div>
