@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public $page = 'cards';
+    public $page = 'orders';
 
     public function changePage($page): void
     {

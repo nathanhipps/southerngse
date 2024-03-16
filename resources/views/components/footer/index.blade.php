@@ -1,89 +1,73 @@
 <!-- Footer -->
-<footer class="bg-gray-900" aria-labelledby="footer-heading">
+<footer class="bg-brand-blue" aria-labelledby="footer-heading">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
-    <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8 lg:py-32">
-        <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+    <div class="lg:flex mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8 lg:py-20">
+        <div class="flex items-center justify-center lg:pr-20">
             <a href="{{ route('home') }}">
-                <div class="flex items-center space-x-4">
-                    <x-icons.paper-airplane class="h-12 w-12 text-white"/>
-                    <span class="text-white text-xl">Southern GSE</span>
-                </div>
+                <x-logos.orange class="w-32"/>
             </a>
-            <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-                <div class="md:grid md:grid-cols-2 md:gap-8">
-                    <div>
-                        <h3 class="text-sm font-semibold leading-6 text-white">Solutions</h3>
-                        <ul role="list" class="mt-6 space-y-4">
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Marketing</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Analytics</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Commerce</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Insights</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="mt-10 md:mt-0">
-                        <h3 class="text-sm font-semibold leading-6 text-white">Support</h3>
-                        <ul role="list" class="mt-6 space-y-4">
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Pricing</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                   class="text-sm leading-6 text-gray-300 hover:text-white">Documentation</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Guides</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">API Status</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="md:grid md:grid-cols-2 md:gap-8">
-                    <div>
-                        <h3 class="text-sm font-semibold leading-6 text-white">Company</h3>
-                        <ul role="list" class="mt-6 space-y-4">
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">About</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Blog</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Jobs</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Press</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Partners</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="mt-10 md:mt-0">
-                        <h3 class="text-sm font-semibold leading-6 text-white">Legal</h3>
-                        <ul role="list" class="mt-6 space-y-4">
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Claim</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Privacy</a>
-                            </li>
-                            <li>
-                                <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">Terms</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        </div>
+        <div class="lg:grid md:grid-cols-3 lf:gap-4 flex-1">
+            <div>
+                <ul role="list" class="mt-4 space-y-4">
+                    <li>
+                        <a href="{{ route('services') }}"
+                           class="text-base leading-6 text-gray-100 hover:text-white">
+                            Services
+                        </a>
+                    </li>
+                </ul>
             </div>
+            <div>
+                <ul role="list" class="mt-4 space-y-4">
+                    <li>
+                        <a href="{{ route('parts') }}"
+                           class="text-base leading-6 text-gray-100 hover:text-white">Parts</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul role="list" class="mt-4 space-y-4">
+                    <li>
+                        <a href="{{ route('equipment-used') }}"
+                           class="text-base leading-6 text-gray-100 hover:text-white">
+                            Used Equipment
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul role="list" class="mt-4 space-y-4">
+                    <li>
+                        <a href="{{ route('manuals') }}" class="text-base leading-6 text-gray-100 hover:text-white">Manuals</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul role="list" class="mt-4 space-y-4">
+                    <li>
+                        <a href="{{ route('contact') }}"
+                           class="text-base leading-6 text-gray-100 hover:text-white">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            @if (auth()->user())
+                <div>
+                    <ul role="list" class="mt-4 space-y-4">
+                        <li>
+                            <a href="{{ route('account') }}"
+                               class="text-base leading-6 text-gray-100 hover:text-white">Your
+                                Account</a>
+                        </li>
+                    </ul>
+                </div>
+            @endif
+        </div>
+    </div>
+    <div class="mx-auto max-w-7xl">
+        <div class="bg-gray-400 opacity-75 h-[2px] my-6"></div>
+        <div class="text-gray-300 pb-12">
+            &copy; {{ now()->format('Y') }} Southern GSE All rights reserved.
         </div>
     </div>
 </footer>

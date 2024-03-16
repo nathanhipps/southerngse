@@ -1,4 +1,5 @@
-<div class=" min-w-64 max-w-80 flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
+<div
+    class="min-w-64 md:max-w-80 flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 mb-4 md:mb-0">
     <nav class="flex flex-1 flex-col">
         <ul role="list" class="flex flex-1 flex-col gap-y-7">
             <li>

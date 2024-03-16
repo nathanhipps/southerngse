@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -32,6 +31,9 @@ class DatabaseSeeder extends Seeder
             AddressSeeder::class,
             FreightCarrierSeeder::class,
             OrderSeeder::class,
+            LeadSeeder::class,
+            UsedEquipmentSeeder::class,
+            ManualSeeder::class,
         ]);
     }
 }

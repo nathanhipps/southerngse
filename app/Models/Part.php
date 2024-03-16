@@ -33,7 +33,7 @@ class Part extends Model
     protected function cost(): Attribute
     {
         return Attribute::make(
-            get: fn(int $value) => $value / 100,
+            get: fn(int|null $value) => $value ? $value / 100 : 0,
             set: fn(float $value) => (int) round($value * 100),
         );
     }

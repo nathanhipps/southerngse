@@ -11,6 +11,10 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -25,13 +29,13 @@
     }"
     x-on:lock-scroll="hideScroll = true"
     x-on:unlock-scroll="hideScroll = false"
-    :class="hideScroll ? 'font-sans antialiased overflow-hidden' : 'font-sans antialiased'"
+    :class="hideScroll ? 'font-sans antialiased overflow-hidden bg-brand-blue' : 'font-sans antialiased bg-brand-blue'"
 >
-<div class="bg-white">
+<div class="bg-white roboto-regular">
     <x-nav/>
     <x-notification/>
 
-    <main>
+    <main class="mt-16">
         {{ $slot }}
     </main>
 

@@ -5,3 +5,61 @@
 [x-cloak] {
     display: none;
 }
+
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.heading-1 {
+    @apply roboto-bold md:text-[56px] text-[40px] md:leading-[78.4px] leading-[48px];
+}
+
+.heading-2 {
+    @apply roboto-bold md:text-[48px] text-[32px] md:leading-[67.2px] leading-[38.4px];
+}
+
+.heading-3 {
+    @apply roboto-bold md:text-[40px] text-[24px] md:leading-[56px] leading-[28.8px];
+}
+
+.heading-4 {
+    @apply roboto-bold md:text-[32px] text-[16px] md:leading-[44.8px] leading-[19.2px];
+}
+
+.subheader-lg {
+    @apply roboto-medium md:text-[24px] text-[20px] md:leading-[33.6px] leading-[28px];
+}
+
+.subheader {
+    @apply roboto-medium md:text-[20px] text-[16px] md:leading-[28px] leading-[22.4px];
+}
+
+/*.body-xl {*/
+/*    @apply roboto-medium text-[20px] leading-[32px];*/
+/*}*/
+
+/*.body-xl-bold {*/
+/*    @apply roboto-bold text-[20px] leading-[32px];*/
+/*}*/
+
+.body-lg {
+    @apply roboto-medium text-[20px] leading-[28px];
+}
+
+.body {
+    @apply roboto-regular text-[14px] leading-[19.6px];
+}

@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Account;
 
-use App\Models\Order;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -13,7 +12,7 @@ class Orders extends Component
     public function render()
     {
         return view('livewire.account.orders', [
-            'orders' => auth()->user()->orders()->paginate(5)
+            'orders' => auth()->user()->orders()->orderBy('created_at', 'desc')->paginate(5)
         ]);
     }
 }

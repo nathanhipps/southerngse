@@ -107,7 +107,7 @@ class Index extends Component
             message: 'Your order has been received'
         );
 
-        return redirect()->to('account');
+        return redirect()->to('/');
     }
 
     public function render()

@@ -4,9 +4,9 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\PartResource\Pages;
 use App\Filament\Imports\PartImporter;
-use App\Filament\Imports\PartsPricingImporter;
 use App\Models\Manufacturer;
 use App\Models\Part;
+use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -56,7 +56,10 @@ class PartResource extends Resource
                 Select::make('manufacturer_id')
                     ->label('Manufacturer')
                     ->options(Manufacturer::all()->pluck('name', 'id'))
-                    ->searchable()
+                    ->searchable(),
+
+                CheckboxList::make('categories')
+                    ->relationship(name: 'categories', titleAttribute: 'name')
             ]);
     }
 
@@ -84,16 +87,11 @@ class PartResource extends Resource
             ])
             ->headerActions([
                 Tables\Actions\ImportAction::make()
+                    ->label('Import Parts')
                     ->importer(PartImporter::class)
                     ->options([
                         'updateExisting' => true,
                     ]),
-                Tables\Actions\ImportAction::make()
-                    ->label('Update Pricing')
-                    ->importer(PartsPricingImporter::class)
-                    ->options([
-                        'updateExisting' => true,
-                    ])
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

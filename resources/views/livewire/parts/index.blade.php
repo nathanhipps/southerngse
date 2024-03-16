@@ -1,14 +1,14 @@
-<div class="flex pt-12">
+<div class="md:flex pt-12">
     <x-parts.sidebar :categories="$categories"/>
     <div>
-        <div class="border-b border-gray-100 pl-8 pb-8">
-            <div class="flex items-center space-x-4">
+        <div class="border-b border-gray-100 px-5 sm:pl-8 sm:pr-0 pb-8">
+            <div class="sm:flex items-center sm:space-x-4">
                 <x-input
                     wire:model.live.debounce="search"
                     placeholder="Search for parts..."
-                    class="w-96"
+                    class="sm:w-96 w-full"
                 />
-                <x-button wire:click="clearSearch">Clear Search</x-button>
+                <x-button wire:click="clearSearch" class="w-full mt-4 sm:mt-0 sm:w-36">Clear Search</x-button>
             </div>
         </div>
         <x-parts>

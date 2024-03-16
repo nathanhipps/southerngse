@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Imports\PartsImport;
 use App\Models\Category;
 use App\Models\Manufacturer;
 use App\Models\Part;
 use Illuminate\Database\Seeder;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PartSeeder extends Seeder
 {
@@ -35,5 +37,7 @@ class PartSeeder extends Seeder
         Part::all()->each(function ($part) use ($categories) {
             $part->categories()->attach($categories->random());
         });
+
+        Excel::import(new PartsImport, resource_path('/imports/itw.xlsx'));
     }
 }

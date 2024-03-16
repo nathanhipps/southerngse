@@ -20,17 +20,22 @@ class PartImporter extends Importer
                 ->requiredMapping()
                 ->rules(['required', 'max:255']),
             ImportColumn::make('description')
+                ->requiredMapping()
                 ->rules(['required', 'max:255']),
             ImportColumn::make('price')
                 ->numeric()
+                ->requiredMapping()
                 ->rules(['required', 'integer']),
             ImportColumn::make('cost')
                 ->numeric()
+                ->requiredMapping()
                 ->rules(['integer']),
             ImportColumn::make('inventory')
+                ->requiredMapping()
                 ->numeric()
                 ->rules(['required', 'integer']),
             ImportColumn::make('lead_time_in_days')
+                ->requiredMapping()
                 ->numeric()
                 ->rules(['required', 'integer']),
             ImportColumn::make('slug')
@@ -40,10 +45,9 @@ class PartImporter extends Importer
                     }
                     return Str::of($data['sku'].'-'.$data['description'])->slug()->toString();
                 }),
-            ImportColumn::make('image_path')
-                ->rules(['max:255']),
             ImportColumn::make('manufacturer')
-                ->relationship(resolveUsing: 'name'),
+                ->requiredMapping()
+                ->relationship(resolveUsing: 'name')
         ];
     }
 
