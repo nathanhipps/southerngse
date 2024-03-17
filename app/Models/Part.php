@@ -50,7 +50,7 @@ class Part extends Model
 
     public function getDisplayPriceAttribute(): string
     {
-        return '$'.number_format($this->price / 100, 2);
+        return '$'.number_format($this->price, 2);
     }
 
     public function scopeSearch(Builder $query, string $search): Builder
