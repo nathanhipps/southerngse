@@ -25,11 +25,10 @@ class PartImporter extends Importer
             ImportColumn::make('price')
                 ->numeric()
                 ->requiredMapping()
-                ->rules(['required', 'integer']),
+                ->rules(['required']),
             ImportColumn::make('cost')
                 ->numeric()
-                ->requiredMapping()
-                ->rules(['integer']),
+                ->requiredMapping(),
             ImportColumn::make('inventory')
                 ->requiredMapping()
                 ->numeric()
