@@ -42,7 +42,7 @@
                                         </div>
                                     </td>
                                     <td class="px-3 py-5 text-sm text-gray-500">
-                                        <div class="text-gray-900">{{ $manual->description }}</div>
+                                        <div class="text-gray-900">{!! $manual->description !!}</div>
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
                                         <a
