@@ -8,7 +8,7 @@
             <h1 class="heading-1 lg:max-w-2xl">Your Trusted GSE Specialists</h1>
             <p class="lg:max-w-2xl mt-4 text-gray-200 shadow subheader-lg">
                 We specialize in providing top-notch parts and service for all types of ground support
-                equipment and we are an authorized ITWGSE (Hobart) service provider
+                equipment and we are an authorized ITWGSE (Hobart) service provider.
             </p>
         </div>
     </div>

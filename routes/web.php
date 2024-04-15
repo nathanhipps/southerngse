@@ -7,6 +7,7 @@ use App\Livewire\Cart\Show as CartShow;
 use App\Livewire\Checkout\Index as CheckoutIndex;
 use App\Livewire\Manual\Index as ManualsIndex;
 use App\Livewire\Parts\Index as PartsIndex;
+use App\Livewire\RentalEquipment;
 use App\Livewire\UsedEquipment;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,8 @@ Route::get('/images/{filename}', [ImageController::class, 'show'])
     ->name('image')
     ->where('filename', '.*');
 Route::get('equipment/used', UsedEquipment::class)->name('equipment-used');
+Route::get('equipment/rental', RentalEquipment::class)->name('equipment-rental');
+Route::view('equipment/new', 'pages.new')->name('equipment-new');
 Route::view('/', 'pages.home')->name('home');
 Route::view('/services', 'pages.services')->name('services');
 Route::view('/contact-us', 'pages.contact')->name('contact');

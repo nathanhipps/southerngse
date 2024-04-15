@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             LeadSeeder::class,
             UsedEquipmentSeeder::class,
             ManualSeeder::class,
+            RentalSeeder::class,
         ]);
     }
 }

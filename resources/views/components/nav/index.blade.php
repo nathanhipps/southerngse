@@ -34,7 +34,9 @@
                 <x-nav.desktop-link href="{{ route('services') }}">Services</x-nav.desktop-link>
                 <x-nav.desktop-link href="{{ route('parts') }}">Parts</x-nav.desktop-link>
                 <x-nav.desktop-link href="{{ route('manuals') }}">Manuals</x-nav.desktop-link>
+                <x-nav.desktop-link href="{{ route('equipment-new') }}">New Equipment</x-nav.desktop-link>
                 <x-nav.desktop-link href="{{ route('equipment-used') }}">Used Equipment</x-nav.desktop-link>
+                <x-nav.desktop-link href="{{ route('equipment-rental') }}">Rental</x-nav.desktop-link>
                 <x-nav.desktop-link href="{{ route('contact') }}">Contact</x-nav.desktop-link>
                 <span class="text-white">
                     <livewire:cart.counter/>
@@ -89,8 +91,9 @@
             <div class="mt-6 flow-root">
                 <div class="-my-6 divide-y divide-gray-500/10">
                     <div class="space-y-2 py-6 text-gray-100 font-bold">
-                        <x-nav.mobile-link href="#">New Equipment</x-nav.mobile-link>
+                        <x-nav.mobile-link href="{{ route('equipment-new') }}">New Equipment</x-nav.mobile-link>
                         <x-nav.mobile-link href="{{ route('equipment-used') }}">Used Equipment</x-nav.mobile-link>
+                        <x-nav.mobile-link href="{{ route('equipment-rental') }}">Rental</x-nav.mobile-link>
                         <x-nav.mobile-link href="{{ route('parts') }}">Parts</x-nav.mobile-link>
                         <x-nav.mobile-link href="{{ route('manuals') }}">Manuals</x-nav.mobile-link>
                         <x-nav.mobile-link href="{{ route('services') }}">Services</x-nav.mobile-link>

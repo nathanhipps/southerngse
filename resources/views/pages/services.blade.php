@@ -10,6 +10,9 @@
                 With our experienced team of technicians and support staff, Southern GSE stands ready to keep your
                 ground operations running.
             </p>
+            <p class="mt-4 text-gray-200 shadow subheader-lg">
+                Southern GSE is an authorized ITWGSE (Hobart) service provider.
+            </p>
         </div>
     </div>
 
