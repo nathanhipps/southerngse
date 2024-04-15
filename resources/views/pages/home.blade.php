@@ -7,7 +7,8 @@
             class="max-w-2xl w-full h-[375px] lg:h-[400px] absolute inset-0 flex flex-col justify-center px-8 lg:px-20 text-gray-100 shadow">
             <h1 class="heading-1 lg:max-w-2xl">Your Trusted GSE Specialists</h1>
             <p class="lg:max-w-2xl mt-4 text-gray-200 shadow subheader-lg">
-                We specialize in providing top-notch parts and service for all types of ground support equipment.
+                We specialize in providing top-notch parts and service for all types of ground support
+                equipment and we are an authorized ITWGSE (Hobart) service provider
             </p>
         </div>
     </div>
@@ -84,8 +85,7 @@
                 <h3 class="heading-2 lg:max-w-2xl mb-2">Stay Flight-Ready with Southern GSE</h3>
                 <p class="lg:max-w-2xl mt-4 text-gray-200 shadow text-[16px] leading-[22.4px] roboto-medium mb-6">
                     Southern GSE offers repair and maintenance services for most of your ground support equipment. If
-                    you are
-                    in need of a complete overhaul or just general maintenance, give us a call.
+                    you are in need of a complete overhaul or just general maintenance, give us a call.
                 </p>
                 <a href="{{ route('contact') }}"
                    class="sm:max-w-64 bg-gray-100 text-brand-orange w-full py-4 block rounded-lg text-center shadow subheader-lg">

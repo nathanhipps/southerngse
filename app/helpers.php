@@ -4,5 +4,5 @@ use Illuminate\Support\Number;
 
 function displayCurrency($number): string
 {
-    return Number::currency($number / 100);
+    return Number::currency($number);
 }

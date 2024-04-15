@@ -90,7 +90,7 @@
                 <div class="-my-6 divide-y divide-gray-500/10">
                     <div class="space-y-2 py-6 text-gray-100 font-bold">
                         <x-nav.mobile-link href="#">New Equipment</x-nav.mobile-link>
-                        <x-nav.mobile-link href="#">Used Equipment</x-nav.mobile-link>
+                        <x-nav.mobile-link href="{{ route('equipment-used') }}">Used Equipment</x-nav.mobile-link>
                         <x-nav.mobile-link href="{{ route('parts') }}">Parts</x-nav.mobile-link>
                         <x-nav.mobile-link href="{{ route('manuals') }}">Manuals</x-nav.mobile-link>
                         <x-nav.mobile-link href="{{ route('services') }}">Services</x-nav.mobile-link>

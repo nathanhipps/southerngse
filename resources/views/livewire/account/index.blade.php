@@ -1,4 +1,4 @@
-<div class="max-w-5xl mx-auto px-5 my-8">
+<div class="max-w-5xl mx-auto px-5 mb-8 pt-12">
     <div class="border-gray-200 border-2  rounded-xl shadow px-10 py-10">
         <div>
             <div class="sm:hidden">
